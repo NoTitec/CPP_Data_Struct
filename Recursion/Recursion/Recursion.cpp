@@ -19,10 +19,29 @@ int factorialIter(int n)
     }
     return result;
 }
+
+int fibIter(int n)
+{
+    //n이 2보다 작은경우
+    if (n < 2) return n;
+    
+    else {
+        int temp, current = 1, last = 0;// 구조로는 last,current순으로 저장됨
+        //n 이 2일경우
+        for (int i = 2; i <= n; i++) {
+            //[0,current=1] 인상태
+            temp = current;//temp에 current 복사
+            current += last; // 현재값은 현재값+이전값으로 갱신
+            last = temp;//last 이전값을 복사했던 이전 current값으로 갱신
+        }
+        return current;
+    }
+}
 int main()
 {
     cout<<factorial(3)<<"\n";
     cout << factorialIter(3);
+    cout << fibIter(2);
 }//순환은 표현이 간단하지만 반복에 비해 호출을 많이하여 수행속도가 느려진다
 //따라서 설명은 순환으하고 실제는 반복으로 바꾸어 코딩하는 경우도있다 ,물론 순환이 더 빠른경우도 있다
 
